@@ -5,8 +5,11 @@ from typing import Any
 
 
 def materialx():
-    import MaterialX as mx  # Lazy import: optional compiled interchange dependency.
-    return mx
+    try:
+        import MaterialX as mx  # Lazy import: optional compiled interchange dependency.
+        return mx
+    except ImportError as exc:
+        raise RuntimeError("MaterialX Python bindings are required: pip install MaterialX") from exc
 
 
 def input_document(path: str):
@@ -24,4 +27,3 @@ def validation(document) -> tuple[bool, str]:
     if isinstance(result, tuple):
         return bool(result[0]), str(result[1])
     return bool(result), ""
-
