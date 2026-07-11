@@ -3,7 +3,7 @@
 Portable MaterialX authoring and validation for look-development interchange
 across Maya, Houdini, Blender, USD/Hydra, Unreal, and renderer pipelines.
 
-![MaterialX interchange](docs/materialx-workflow.png)
+![MaterialX material graph exchanged across DCC look-development tools](docs/images/dcc-materialx-showcase.webp)
 
 ## Included skill
 
