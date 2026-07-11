@@ -12,6 +12,7 @@ metadata:
     tags: [materialx, material, lookdev, standard-surface, usd, hydra]
     search-hint: "create MaterialX material, validate mtlx, inspect material graph, exchange lookdev"
     tools: tools.yaml
+    runtimes: runtimes.yaml
 ---
 
 # MaterialX Look Development

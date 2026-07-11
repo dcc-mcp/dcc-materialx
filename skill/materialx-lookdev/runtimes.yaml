@@ -1,0 +1,8 @@
+runtimes:
+  - name: materialx-python
+    type: python_package
+    package: MaterialX
+    module: MaterialX
+    description: Official MaterialX Python bindings used for authoring and validation.
+    optional: false
+    guidance: Install MaterialX in the target adapter Python environment; the skill never installs packages.
