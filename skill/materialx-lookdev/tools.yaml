@@ -1,0 +1,51 @@
+tools:
+  - name: create_standard_surface
+    description: Create a portable MaterialX Standard Surface document.
+    source_file: scripts/create_standard_surface.py
+    execution: sync
+    affinity: any
+    timeout_hint_secs: 30
+    enforce_thread_affinity: true
+    annotations: {read_only_hint: false, destructive_hint: false, idempotent_hint: false}
+    input_schema:
+      type: object
+      required: [output_path, material_name]
+      properties:
+        output_path: {type: string}
+        material_name: {type: string, pattern: "^[A-Za-z_][A-Za-z0-9_]*$"}
+        base_color: {type: array, minItems: 3, maxItems: 3, items: {type: number}, default: [0.8, 0.8, 0.8]}
+        base_color_texture: {type: string}
+        roughness: {type: number, minimum: 0, maximum: 1, default: 0.5}
+        metalness: {type: number, minimum: 0, maximum: 1, default: 0}
+    output_schema: {type: object}
+
+  - name: validate_document
+    description: Parse and validate a MaterialX document.
+    source_file: scripts/validate_document.py
+    execution: sync
+    affinity: any
+    timeout_hint_secs: 30
+    enforce_thread_affinity: true
+    annotations: {read_only_hint: true, idempotent_hint: true}
+    input_schema:
+      type: object
+      required: [input_path]
+      properties:
+        input_path: {type: string}
+    output_schema: {type: object}
+
+  - name: inspect_document
+    description: List nodes and material relationships in a MaterialX document.
+    source_file: scripts/inspect_document.py
+    execution: sync
+    affinity: any
+    timeout_hint_secs: 30
+    enforce_thread_affinity: true
+    annotations: {read_only_hint: true, idempotent_hint: true}
+    input_schema:
+      type: object
+      required: [input_path]
+      properties:
+        input_path: {type: string}
+    output_schema: {type: object}
+
